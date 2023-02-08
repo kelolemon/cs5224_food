@@ -21,5 +21,8 @@ func CreateNewUser(r common.CreateNewUserReq) (res common.CreateNewUserResp, err
 			Code: code,
 		}, nil
 	}
-	return common.CreateNewUserResp{}, nil
+	return common.CreateNewUserResp{
+		Code: code,
+		Msg:  "Created successfully",
+	}, nil
 }
