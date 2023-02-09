@@ -27,9 +27,9 @@ type CreateNewLoginSessionReq struct {
 // Code = 1 means something wrong, error can be seen at message, such as Msg = "wrong password"
 // Code = 0 means correct, session is at Session
 type CreateNewLoginSessionResp struct {
-	Msg     string `json:"msg,omitempty"`
-	Session string `json:"session,omitempty"`
-	Code    int32  `json:"code,omitempty"`
+	Msg     string `json:"msg"`
+	Session string `json:"session"`
+	Code    int32  `json:"code"`
 }
 
 type GetUserInfoReq struct {
@@ -37,7 +37,7 @@ type GetUserInfoReq struct {
 }
 
 type GetUserInfoResp struct {
-	Code int32  `json:"code,omitempty"`
-	Msg  string `json:"msg,omitempty"`
+	Code int32  `json:"code"`
+	Msg  string `json:"msg"`
 	User User   `json:"user"`
 }
