@@ -19,5 +19,18 @@ func CreateUser(r common.User) (code int32, err error) {
 		}
 		return 0, nil
 	}
+
+	if res.Error != nil {
+		return 1, res.Error
+	}
+
 	return 1, fmt.Errorf("username is existed")
+}
+
+func GetUser(id string) (user common.User, err error) {
+	res := client.MysqlDB.First(&user, "id = ?", id)
+	if res.Error != nil {
+		return common.User{}, res.Error
+	}
+	return user, nil
 }
