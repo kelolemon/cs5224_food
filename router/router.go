@@ -11,5 +11,5 @@ func InitRouters(e *gin.Engine) {
 	api := e.Group("api")
 	api.POST("/user", method.CreateNewUser)
 	api.POST("/login", method.CreateLoginSession)
-
+	api.GET("/user", method.GetUser)
 }
