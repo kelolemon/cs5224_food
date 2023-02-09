@@ -11,17 +11,20 @@ import (
 
 func CreateNewLoginSession(r common.CreateNewLoginSessionReq) (res common.CreateNewLoginSessionResp, err error) {
 	user, err := dao.GetUser(r.Username)
+	code := int32(0)
 	if err != nil {
+		code = 1
 		return common.CreateNewLoginSessionResp{
-			Code:    1,
+			Code:    code,
 			Msg:     err.Error(),
 			Session: "",
 		}, nil
 	}
 
 	if user.Password != r.Password {
+		code = 1
 		return common.CreateNewLoginSessionResp{
-			Code:    1,
+			Code:    code,
 			Msg:     "password not correct",
 			Session: "",
 		}, nil
@@ -34,7 +37,7 @@ func CreateNewLoginSession(r common.CreateNewLoginSessionReq) (res common.Create
 	}
 
 	return common.CreateNewLoginSessionResp{
-		Code:    0,
+		Code:    code,
 		Msg:     "OK",
 		Session: session,
 	}, nil

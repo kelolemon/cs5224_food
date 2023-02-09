@@ -9,9 +9,11 @@ import (
 
 func GetUserInfo(r common.GetUserInfoReq) (res common.GetUserInfoResp, err error) {
 	id, err := client.RedisCli.Get(r.Session).Result()
+	code := int32(0)
 	if err == redis.Nil {
+		code = 1
 		return common.GetUserInfoResp{
-			Code: 1,
+			Code: code,
 			Msg:  "session is wrong or expired",
 			User: common.User{},
 		}, nil
@@ -27,7 +29,7 @@ func GetUserInfo(r common.GetUserInfoReq) (res common.GetUserInfoResp, err error
 	}
 
 	return common.GetUserInfoResp{
-		Code: 0,
+		Code: code,
 		Msg:  "OK",
 		User: user,
 	}, nil
