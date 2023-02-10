@@ -41,3 +41,9 @@ type GetUserInfoResp struct {
 	Msg  string `json:"msg"`
 	User User   `json:"user"`
 }
+
+type GetAllDinersResp struct {
+	Code   int32   `json:"code"`
+	Msg    string  `json:"msg"`
+	Diners []Diner `json:"diners"`
+}

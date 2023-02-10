@@ -81,3 +81,15 @@ func GetUser(c *gin.Context) {
 	}
 	c.JSON(200, res)
 }
+
+func GetAllDiners(c *gin.Context) {
+	res, err := helper.GetAllDiners()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"message": "internal error",
+			"err":     err,
+		})
+		return
+	}
+	c.JSON(200, res)
+}

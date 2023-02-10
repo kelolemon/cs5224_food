@@ -8,3 +8,15 @@ CREATE TABLE food.users (
     gender int,
     primary key(id)
 );
+
+create table food.diners (
+    id int not null primary key auto_increment,
+    name text,
+    category text,
+    address text,
+    url text,
+    ratings text,
+    reviewers text,
+    reviews text,
+    review_times text
+);
