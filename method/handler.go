@@ -93,3 +93,27 @@ func GetAllDiners(c *gin.Context) {
 	}
 	c.JSON(200, res)
 }
+
+func CreateDiner(c *gin.Context) {
+	raw, _ := c.GetRawData()
+	log.Printf("[info] create dinner, request body = %v", string(raw))
+	var createDinerReq common.CreateDinerReq
+	err := json.Unmarshal(raw, &createDinerReq)
+	if err != nil {
+		log.Printf("[warn] request json converted error, err = %v, request body = %v", err, string(raw))
+		c.JSON(400, gin.H{
+			"message": "bad request",
+			"err":     err,
+		})
+		return
+	}
+	res, err := helper.CreateDiner(createDinerReq)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"message": "internal error",
+			"err":     err,
+		})
+		return
+	}
+	c.JSON(200, res)
+}

@@ -47,3 +47,19 @@ type GetAllDinersResp struct {
 	Msg    string  `json:"msg"`
 	Diners []Diner `json:"diners"`
 }
+
+type CreateDinerReq struct {
+	Name        string `json:"name"`
+	Category    string `json:"category"`
+	Address     string `json:"address"`
+	URL         string `json:"url"`
+	Ratings     string `json:"ratings"`
+	Reviews     string `json:"reviews"`
+	Reviewers   string `json:"reviewers"`
+	ReviewTimes string `json:"review_times"`
+}
+
+type CreateDinerResp struct {
+	Code int32  `json:"code"`
+	Msg  string `json:"msg"`
+}

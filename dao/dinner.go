@@ -14,3 +14,8 @@ func GetAllDinners() (diners []common.Diner, err error) {
 
 	return diners, nil
 }
+
+func CreateDiner(diner common.Diner) (err error) {
+	err = client.MysqlDB.Create(&diner).Error
+	return err
+}
