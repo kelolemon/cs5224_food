@@ -15,6 +15,7 @@ func CreateDiner(r common.CreateDinerReq) (res common.CreateDinerResp, err error
 		Reviewers:   r.Reviewers,
 		Reviews:     r.Reviews,
 		ReviewTimes: r.ReviewTimes,
+		ImageURL:    r.ImageURL,
 	}
 	err = dao.CreateDiner(diner)
 	if err != nil {

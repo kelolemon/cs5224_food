@@ -15,9 +15,10 @@ type Diner struct {
 	Name        string
 	Category    string
 	Address     string
-	URL         string
+	URL         string `gorm:"url"`
 	Ratings     string
 	Reviews     string
 	Reviewers   string
 	ReviewTimes string
+	ImageURL    string `gorm:"image_url"`
 }

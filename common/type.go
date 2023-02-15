@@ -57,6 +57,7 @@ type CreateDinerReq struct {
 	Reviews     string `json:"reviews"`
 	Reviewers   string `json:"reviewers"`
 	ReviewTimes string `json:"review_times"`
+	ImageURL    string `json:"image_url"`
 }
 
 type CreateDinerResp struct {
