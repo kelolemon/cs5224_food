@@ -18,5 +18,6 @@ create table food.diners (
     ratings text,
     reviewers text,
     reviews text,
-    review_times text
+    review_times text,
+    image_url text
 );
