@@ -67,7 +67,7 @@ type CreateDinerResp struct {
 
 type CreateCommentReq struct {
 	Username string `json:"username"`
-	DinerID  int32  `json:"dinerID"`
+	DinerID  int32  `json:"diner_id"`
 	Msg      string `json:"comment"`
 }
 
