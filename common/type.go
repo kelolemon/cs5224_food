@@ -64,3 +64,24 @@ type CreateDinerResp struct {
 	Code int32  `json:"code"`
 	Msg  string `json:"msg"`
 }
+
+type CreateCommentReq struct {
+	Username string `json:"username"`
+	DinerID  int32  `json:"dinerID"`
+	Msg      string `json:"comment"`
+}
+
+type CreateCommentResp struct {
+	Code int32  `json:"code"`
+	Msg  string `json:"msg"`
+}
+
+type GetCommentReq struct {
+	DinerID int32 `form:"diner_id"`
+}
+
+type GetCommentResp struct {
+	Code     int32     `json:"code"`
+	Msg      string    `json:"msg"`
+	Comments []Comment `json:"comments"`
+}

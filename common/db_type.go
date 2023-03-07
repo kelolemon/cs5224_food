@@ -22,3 +22,10 @@ type Diner struct {
 	ReviewTimes string `json:"review_times,omitempty"`
 	ImageURL    string `gorm:"image_url" json:"image_url,omitempty"`
 }
+
+type Comment struct {
+	ID      int32  `json:"id,omitempty"`
+	UserID  string `json:"user_id,omitempty"`
+	DinerID int32  `json:"diner_id,omitempty"`
+	Msg     string `json:"msg"`
+}

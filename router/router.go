@@ -14,4 +14,6 @@ func InitRouters(e *gin.Engine) {
 	api.GET("/user", method.GetUser)
 	api.GET("/diners", method.GetAllDiners)
 	api.POST("/diner", method.CreateDiner)
+	api.POST("/comment", method.CreateComment)
+	api.GET("/comment", method.GetComments)
 }

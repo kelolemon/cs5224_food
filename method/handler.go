@@ -117,3 +117,49 @@ func CreateDiner(c *gin.Context) {
 	}
 	c.JSON(200, res)
 }
+
+func CreateComment(c *gin.Context) {
+	raw, _ := c.GetRawData()
+	log.Printf("[info] create comment, request body = %v", string(raw))
+	var createCommentReq common.CreateCommentReq
+	err := json.Unmarshal(raw, &createCommentReq)
+	if err != nil {
+		log.Printf("[warn] request json converted error, err = %v, request body = %v", err, string(raw))
+		c.JSON(400, gin.H{
+			"message": "bad request",
+			"err":     err,
+		})
+		return
+	}
+	res, err := helper.CreateComment(createCommentReq)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"message": "internal error",
+			"err":     err,
+		})
+		return
+	}
+	c.JSON(200, res)
+}
+
+func GetComments(c *gin.Context) {
+	var getCommentReq common.GetCommentReq
+	err := c.ShouldBindQuery(&getCommentReq)
+	if err != nil {
+		log.Printf("get param error, err=%v", err)
+		c.JSON(400, gin.H{
+			"message": "bad request",
+			"err":     err,
+		})
+		return
+	}
+	res, err := helper.GetComments(getCommentReq)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"message": "internal error",
+			"err":     err,
+		})
+		return
+	}
+	c.JSON(200, res)
+}

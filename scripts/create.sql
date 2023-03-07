@@ -21,3 +21,10 @@ create table food.diners (
     review_times text,
     image_url text
 );
+
+create table food.comments (
+    id int not null  primary key  auto_increment,
+    user_id text,
+    diner_id int,
+    msg text
+);
