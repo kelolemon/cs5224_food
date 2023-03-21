@@ -28,3 +28,11 @@ create table food.comments (
     diner_id int,
     msg text
 );
+
+create table food.dialogs (
+    id int not null primary key auto_increment,
+    father_id int,
+    user_id text,
+    diner_id int,
+    msg text
+);

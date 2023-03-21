@@ -163,3 +163,49 @@ func GetComments(c *gin.Context) {
 	}
 	c.JSON(200, res)
 }
+
+func CreateDialog(c *gin.Context) {
+	raw, _ := c.GetRawData()
+	log.Printf("[info] create dialog, request body = %v", string(raw))
+	var createDialogReq common.CreateDialogReq
+	err := json.Unmarshal(raw, &createDialogReq)
+	if err != nil {
+		log.Printf("[warn] request json converted error, err = %v, request body = %v", err, string(raw))
+		c.JSON(400, gin.H{
+			"message": "bad request",
+			"err":     err,
+		})
+		return
+	}
+	res, err := helper.CreateDialog(createDialogReq)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"message": "internal error",
+			"err":     err,
+		})
+		return
+	}
+	c.JSON(200, res)
+}
+
+func GetDialogs(c *gin.Context) {
+	var getDialogReq common.GetDialogReq
+	err := c.ShouldBindQuery(&getDialogReq)
+	if err != nil {
+		log.Printf("get param error, err=%v", err)
+		c.JSON(400, gin.H{
+			"message": "bad request",
+			"err":     err,
+		})
+		return
+	}
+	res, err := helper.GetDialogs(getDialogReq)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"message": "internal error",
+			"err":     err,
+		})
+		return
+	}
+	c.JSON(200, res)
+}

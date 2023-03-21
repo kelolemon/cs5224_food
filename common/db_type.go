@@ -29,3 +29,11 @@ type Comment struct {
 	DinerID int32  `json:"diner_id,omitempty"`
 	Msg     string `json:"msg"`
 }
+
+type Dialog struct {
+	ID       int32  `json:"id,omitempty"`
+	FatherID int32  `json:"father_id,omitempty" gorm:"father_id"`
+	UserID   string `json:"user_id,omitempty" gorm:"user_id"`
+	DinerID  int32  `json:"diner_id,omitempty" gorm:"diner_id"`
+	Msg      string `json:"msg,omitempty"`
+}

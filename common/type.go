@@ -85,3 +85,25 @@ type GetCommentResp struct {
 	Msg      string    `json:"msg"`
 	Comments []Comment `json:"comments"`
 }
+
+type CreateDialogReq struct {
+	Username string `json:"username"`
+	FatherID int32  `json:"father_id"`
+	DinerID  int32  `json:"diner_id"`
+	Msg      string `json:"comment"`
+}
+
+type CreateDialogResp struct {
+	Code int32  `json:"code"`
+	Msg  string `json:"msg"`
+}
+
+type GetDialogReq struct {
+	DinerID int32 `form:"diner_id"`
+}
+
+type GetDialogResp struct {
+	Code    int32    `json:"code"`
+	Msg     string   `json:"msg"`
+	Dialogs []Dialog `json:"dialogs"`
+}
