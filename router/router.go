@@ -18,4 +18,5 @@ func InitRouters(e *gin.Engine) {
 	api.GET("/comment", method.GetComments)
 	api.POST("/dialog", method.CreateDialog)
 	api.GET("/dialog", method.GetDialogs)
+	api.GET("/ads", method.GetAds)
 }

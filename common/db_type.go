@@ -37,3 +37,10 @@ type Dialog struct {
 	DinerID  int32  `json:"diner_id,omitempty" gorm:"diner_id"`
 	Msg      string `json:"msg,omitempty"`
 }
+
+type Ad struct {
+	ID      int32 `json:"id"`
+	DinerID int32 `json:"diner_id" gorm:"diner_id"`
+	Vip     int32 `json:"vip"`
+	EndDate int32 `json:"end_date" gorm:"end_date"`
+}

@@ -3,6 +3,7 @@ package method
 import (
 	"encoding/json"
 	"food/common"
+	"food/dao"
 	"food/helper"
 	"log"
 
@@ -200,6 +201,18 @@ func GetDialogs(c *gin.Context) {
 		return
 	}
 	res, err := helper.GetDialogs(getDialogReq)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"message": "internal error",
+			"err":     err,
+		})
+		return
+	}
+	c.JSON(200, res)
+}
+
+func GetAds(c *gin.Context) {
+	res, err := dao.GetAds()
 	if err != nil {
 		c.JSON(500, gin.H{
 			"message": "internal error",

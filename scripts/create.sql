@@ -36,3 +36,10 @@ create table food.dialogs (
     diner_id int,
     msg text
 );
+
+create table food.ads (
+    id int not null primary key auto_increment,
+    diner_id int,
+    vip int,
+    end_date timestamp
+);
