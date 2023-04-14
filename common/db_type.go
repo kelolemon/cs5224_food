@@ -1,5 +1,7 @@
 package common
 
+import "time"
+
 type User struct {
 	ID       string
 	Name     string
@@ -39,8 +41,8 @@ type Dialog struct {
 }
 
 type Ad struct {
-	ID      int32 `json:"id"`
-	DinerID int32 `json:"diner_id" gorm:"diner_id"`
-	Vip     int32 `json:"vip"`
-	EndDate int32 `json:"end_date" gorm:"end_date"`
+	ID      int32     `json:"id"`
+	DinerID int32     `json:"diner_id" gorm:"diner_id"`
+	Vip     int32     `json:"vip"`
+	EndDate time.Time `json:"end_date" gorm:"end_date"`
 }
